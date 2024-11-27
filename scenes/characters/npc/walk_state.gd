@@ -3,10 +3,10 @@ extends NodeState
 @export var character: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var navigation_agent_2d: NavigationAgent2D
-@export var min_speed: float = 5.0
+@export var min_speed: float = 10.0
 @export var max_speed: float = 10.0
 @export var min_cycles: int = 1
-@export var max_cycles: int = 4
+@export var max_cycles: int = 1
 
 var speed: float
 var cycles: int

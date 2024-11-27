@@ -6,13 +6,6 @@ extends NodeState
 @onready var timer: Timer = $Timer
 
 
-#func _ready() -> void:
-    #timer.wait_time = time_interval
-    #timer.timeout.connect(on_timer_timeout)
-    #add_child(timer)
-    #timer.is_stopped()
-
-
 func _on_next_transitions() -> void:
     if timer.is_stopped():
         transition.emit('walk')
