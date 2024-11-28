@@ -452,3 +452,7 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 shape = SubResource("CircleShape2D_1qr82")
 disabled = true
 debug_color = Color(0.915001, 0.268131, 0.290021, 0.42)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(0, -2)
+radius = 4.0
