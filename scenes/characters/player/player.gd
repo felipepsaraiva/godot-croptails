@@ -9,6 +9,7 @@ var direction: Vector2 = Vector2.DOWN
 
 
 func _ready() -> void:
+    hit_component.current_tool = current_tool
     ToolManager.tool_selected.connect(on_tool_selected)
 
 
