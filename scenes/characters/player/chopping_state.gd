@@ -5,10 +5,6 @@ extends NodeState
 @export var hit_component_collision_shape: CollisionShape2D
 
 
-func _ready() -> void:
-    hit_component_collision_shape.disabled = true
-
-
 func _on_next_transitions() -> void:
     if not animated_sprite_2d.is_playing():
         transition.emit('idle')
