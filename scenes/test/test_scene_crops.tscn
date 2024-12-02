@@ -25,10 +25,17 @@ position = Vector2(293, 160)
 [node name="GameScreen" parent="." instance=ExtResource("3_2r0pw")]
 
 [node name="DayNightCycleComponent" parent="." instance=ExtResource("4_g3ala")]
-visible = false
 
 [node name="Corn" parent="." instance=ExtResource("5_mvyp3")]
 position = Vector2(326, 182)
+initial_growth_state = 3
 
 [node name="Tomato" parent="." instance=ExtResource("6_82f1f")]
-position = Vector2(357, 183)
+position = Vector2(370, 182)
+initial_growth_state = 2
+
+[node name="Corn2" parent="." instance=ExtResource("5_mvyp3")]
+position = Vector2(324, 213)
+
+[node name="Tomato2" parent="." instance=ExtResource("6_82f1f")]
+position = Vector2(374, 212)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://keit5y5siqp6"]
+[gd_scene load_steps=9 format=3 uid="uid://keit5y5siqp6"]
 
 [ext_resource type="Script" path="res://scenes/objects/plants/corn.gd" id="1_1xqpg"]
 [ext_resource type="Texture2D" uid="uid://cxgo1e3hq75pc" path="res://assets/game/objects/basic_plants.png" id="1_syk24"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nlqt"]
 size = Vector2(13.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpyng"]
+size = Vector2(13.5, 12)
 
 [node name="Corn" type="Node2D"]
 y_sort_enabled = true
@@ -30,10 +33,20 @@ emitting = false
 emitting = false
 
 [node name="GrowthCycleComponent" parent="." instance=ExtResource("5_ebx6m")]
+mature_period = 2
 
-[node name="HurtComponent" parent="." instance=ExtResource("2_4501q")]
+[node name="WateringHurtComponent" parent="." instance=ExtResource("2_4501q")]
 tool = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WateringHurtComponent"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_3nlqt")
+
+[node name="TillingHurtComponent" parent="." instance=ExtResource("2_4501q")]
+monitoring = false
+tool = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TillingHurtComponent"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_lpyng")
+debug_color = Color(0.812889, 0.386298, 0.369776, 0.42)
