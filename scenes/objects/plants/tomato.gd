@@ -28,6 +28,7 @@ func _ready() -> void:
 func on_grew_up(growth_state: DataTypes.GrowthStates) -> void:
     current_growth_state = growth_state
     sprite_2d.frame = int(growth_state) + frame_offset
+    sprite_2d.modulate = Color.WHITE
 
     match growth_state:
         DataTypes.GrowthStates.Mature:
@@ -40,11 +41,17 @@ func on_grew_up(growth_state: DataTypes.GrowthStates) -> void:
 
 
 func on_watered(_hit_damage: int) -> void:
-    if !growth_cycle_component.is_watered:
-        watering_particles.emitting = true
-        await get_tree().create_timer(watering_time).timeout
-        watering_particles.emitting = false
-        growth_cycle_component.is_watered = true
+    if current_growth_state == DataTypes.GrowthStates.Mature or current_growth_state == DataTypes.GrowthStates.Spoiled:
+        return
+
+    if growth_cycle_component.is_watered:
+        return
+
+    watering_particles.emitting = true
+    await get_tree().create_timer(watering_time).timeout
+    watering_particles.emitting = false
+    growth_cycle_component.is_watered = true
+    sprite_2d.modulate = Color.LIGHT_GRAY
 
 
 func on_harvested(_hit_damage: int) -> void:
