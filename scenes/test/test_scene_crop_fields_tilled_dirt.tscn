@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=4 uid="uid://bojp5wowy8gye"]
+[gd_scene load_steps=11 format=4 uid="uid://bojp5wowy8gye"]
 
+[ext_resource type="PackedScene" uid="uid://biw6jimjnlbqh" path="res://scenes/components/test_scene_save_data_manager_component.tscn" id="1_akc1u"]
 [ext_resource type="TileSet" uid="uid://dic20l2jo75hl" path="res://tilesets/game_tile_set.tres" id="1_b5qlu"]
 [ext_resource type="PackedScene" uid="uid://vrcuj5gugs6f" path="res://scenes/characters/player/player.tscn" id="2_6int8"]
 [ext_resource type="PackedScene" uid="uid://b1e1ym4ljlaa0" path="res://scenes/components/field_cursor_component.tscn" id="2_fmvrc"]
+[ext_resource type="PackedScene" uid="uid://cnngd5janbuai" path="res://scenes/components/save_level_data_component.tscn" id="2_gobvh"]
 [ext_resource type="PackedScene" uid="uid://cfjgitj25txq8" path="res://scenes/ui/game_screen.tscn" id="3_0wbtv"]
 [ext_resource type="PackedScene" uid="uid://c8t2nu208scbx" path="res://scenes/components/crops_cursor_component.tscn" id="4_jk66w"]
 [ext_resource type="PackedScene" uid="uid://b270scjiheikd" path="res://scenes/components/day_night_cycle_component.tscn" id="4_m25u5"]
+[ext_resource type="PackedScene" uid="uid://dw37srqs2twxw" path="res://scenes/components/save_data_component.tscn" id="4_xv1yt"]
+[ext_resource type="Resource" uid="uid://beaaywh2uaobq" path="res://resources/tilemap_layer_data_resource.tres" id="5_kxq6e"]
 
 [node name="TestSceneCropFieldsTilledDirt" type="Node2D"]
+
+[node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("1_akc1u")]
+
+[node name="SaveLevelDataComponent" parent="." instance=ExtResource("2_gobvh")]
 
 [node name="GameTilemap" type="Node2D" parent="."]
 
@@ -21,6 +29,9 @@ tile_set = ExtResource("1_b5qlu")
 
 [node name="TilledSoil" type="TileMapLayer" parent="GameTilemap"]
 tile_set = ExtResource("1_b5qlu")
+
+[node name="SaveDataComponent" parent="GameTilemap/TilledSoil" instance=ExtResource("4_xv1yt")]
+save_data_resource = ExtResource("5_kxq6e")
 
 [node name="CropFields" type="Node2D" parent="."]
 
