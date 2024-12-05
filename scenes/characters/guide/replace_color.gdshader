@@ -10,12 +10,12 @@ const float preicion = 0.1;
 
 void fragment() {
     vec4 color = texture(TEXTURE, UV);
-    
+
     if (distance(color, original_0) <= 0.1)
         color = replace_0;
-    
+
     if (distance(color, original_1) <= 0.1)
         color = replace_1;
-    
+
     COLOR = color;
 }
