@@ -27,7 +27,7 @@ func _on_emote_idle_timer_timeout() -> void:
     play_emote(emote)
 
 
-func _on_inventory_changed(inventory: Dictionary) -> void:
+func _on_inventory_changed(_inventory: Dictionary) -> void:
     animated_sprite_2d.play('emote_7_excited')
 
 
