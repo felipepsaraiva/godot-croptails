@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpnuvesf1ff37"]
+[gd_scene load_steps=15 format=3 uid="uid://cpnuvesf1ff37"]
 
 [ext_resource type="Texture2D" uid="uid://bclfv43sxucw4" path="res://assets/game/characters/cow_sprites.png" id="1_1of2n"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="2_rp15i"]
 [ext_resource type="Script" path="res://scenes/characters/npc/idle_state.gd" id="3_51ijb"]
 [ext_resource type="Script" path="res://scenes/characters/npc/walk_state.gd" id="4_bwyvq"]
+[ext_resource type="PackedScene" uid="uid://dl4qgaf6uf1sh" path="res://audio/sfx/cow_moo_sfx.tscn" id="5_hxf8x"]
+[ext_resource type="PackedScene" uid="uid://dpdut6a1yojc" path="res://scenes/components/audio_play_time_component.tscn" id="6_0wige"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mn1sh"]
 atlas = ExtResource("1_1of2n")
@@ -92,7 +94,6 @@ avoidance_mask = 3
 [node name="NodeStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("2_rp15i")
 initial_node_state = NodePath("Idle")
-debug = true
 
 [node name="Idle" type="Node" parent="NodeStateMachine" node_paths=PackedStringArray("character", "animated_sprite_2d")]
 script = ExtResource("3_51ijb")
@@ -110,3 +111,10 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 max_speed = 25.0
 max_cycles = 5
+
+[node name="CowMooSFX" parent="." instance=ExtResource("5_hxf8x")]
+
+[node name="AudioPlayTimeComponent" parent="." node_paths=PackedStringArray("audio_stream_player_2d") instance=ExtResource("6_0wige")]
+wait_time = 21.0
+autostart = true
+audio_stream_player_2d = NodePath("../CowMooSFX")
