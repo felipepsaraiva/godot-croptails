@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
     is_open = true
 
     var balloon: BaseGameDialogueBalloon = ballon_scene.instantiate()
-    get_tree().current_scene.add_child(balloon)
+    get_tree().root.add_child(balloon)
     balloon.start(load('res://dialogue/conversations/chest.dialogue'), dialogue_start_command)
 
 
@@ -91,7 +91,7 @@ func _add_reward_scene() -> void:
     for scene in output_reward_scenes:
         var reward_scene := scene.instantiate() as Node2D
         reward_scene.global_position = _get_random_position_in_circle(reward_marker.global_position, reward_output_radius)
-        get_tree().current_scene.add_child(reward_scene)
+        get_tree().root.add_child(reward_scene)
 
 
 func _get_random_position_in_circle(center: Vector2, radius: float) -> Vector2:

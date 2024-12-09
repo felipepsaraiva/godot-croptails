@@ -6,13 +6,19 @@ const tomato_plant_scene: PackedScene = preload('res://scenes/objects/plants/tom
 
 @export var tilled_soil_tilemap_layer: TileMapLayer
 
+var player: Player
 var mouse_position: Vector2
 var cell_position: Vector2i
 var cell_source_id: int
 var local_cell_position: Vector2
 var distance: float
 
-@onready var player: Player = get_tree().get_first_node_in_group('player')
+#@onready var player: Player = get_tree().get_first_node_in_group('player')
+
+
+func _ready() -> void:
+    await get_tree().process_frame
+    player = get_tree().get_first_node_in_group('player')
 
 
 func _unhandled_input(event: InputEvent) -> void:

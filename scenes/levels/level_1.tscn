@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://bq48meqrgqi45"]
+[gd_scene load_steps=16 format=4 uid="uid://bq48meqrgqi45"]
 
+[ext_resource type="PackedScene" uid="uid://cnngd5janbuai" path="res://scenes/components/save_level_data_component.tscn" id="1_fqpfq"]
 [ext_resource type="TileSet" uid="uid://dic20l2jo75hl" path="res://tilesets/game_tile_set.tres" id="1_u1hhv"]
 [ext_resource type="PackedScene" uid="uid://divsi0qoom2br" path="res://scenes/houses/large_house.tscn" id="2_hbfjr"]
 [ext_resource type="PackedScene" uid="uid://dhp8c5fw5gv3y" path="res://scenes/characters/chicken/chicken.tscn" id="3_dxhtv"]
+[ext_resource type="PackedScene" uid="uid://dw37srqs2twxw" path="res://scenes/components/save_data_component.tscn" id="3_nxqux"]
 [ext_resource type="PackedScene" uid="uid://b1e1ym4ljlaa0" path="res://scenes/components/field_cursor_component.tscn" id="3_y05v5"]
 [ext_resource type="PackedScene" uid="uid://cpnuvesf1ff37" path="res://scenes/characters/cow/cow.tscn" id="4_3aglp"]
 [ext_resource type="PackedScene" uid="uid://c8t2nu208scbx" path="res://scenes/components/crops_cursor_component.tscn" id="4_bh6jh"]
+[ext_resource type="Resource" uid="uid://beaaywh2uaobq" path="res://resources/tilemap_layer_data_resource.tres" id="4_q37ug"]
 [ext_resource type="PackedScene" uid="uid://cwuy5cxoymac1" path="res://scenes/characters/guide/guide.tscn" id="4_qfxsy"]
 [ext_resource type="PackedScene" uid="uid://bshnhdivl4acy" path="res://scenes/objects/chest/chest.tscn" id="5_3vant"]
 [ext_resource type="PackedScene" uid="uid://cw10sxhqb1fst" path="res://scenes/objects/egg.tscn" id="6_bwjp8"]
@@ -26,6 +29,8 @@ source_geometry_mode = 2
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
 
+[node name="SaveLevelDataComponent" parent="." instance=ExtResource("1_fqpfq")]
+
 [node name="GameTilemap" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -39,6 +44,9 @@ tile_set = ExtResource("1_u1hhv")
 
 [node name="TilledSoil" type="TileMapLayer" parent="GameTilemap"]
 tile_set = ExtResource("1_u1hhv")
+
+[node name="SaveDataComponent" parent="GameTilemap/TilledSoil" instance=ExtResource("3_nxqux")]
+save_data_resource = ExtResource("4_q37ug")
 
 [node name="Undergrowth" type="TileMapLayer" parent="GameTilemap"]
 tile_map_data = PackedByteArray("AAAWAA4ABAAGAAEAAAASAA8ABAAGAAEAAAAUAAwABAAGAAEAAAAWAAkABAAGAAEAAAAUAAYABAAGAAIAAAASAAUABAAFAAEAAAAOAAUABAAFAAEAAAALAAQABAAFAAEAAAAJAAUABAAFAAEAAAAIAAQABAAFAAEAAAAFAAUABAAGAAEAAAAFAAMABAAGAAMAAAAGAAgABAAGAAEAAAAHAAoABAAGAAEAAAAHAA0ABAAGAAEAAAAEAA8ABAAFAAEAAAAFABEABAAGAAEAAAAKABAABAAFAAEAAAANABIABAAGAAEAAAAKABUABAAHAAMAAAAOABYABAAGAAEAAAAOABMABAAFAAEAAAAQABMABAAGAAEAAAAPABEABAAGAAEAAAAXABMABAAGAAEAAAAYABUABAAGAAEAAAAcABUABAAGAAEAAAAbABgABAAFAAEAAAAZABYABAAFAAEAAAAXABkABAAFAAEAAAAWABwABAAGAAEAAAAZAB0ABAAGAAIAAAAbABsABAAGAAEAAAASABgABAAGAAEAAAAQABgABAAFAAEAAAAcABoABAAHAAMAAAAdABwABAAGAAEAAAAeABgABAAGAAEAAAAgABwABAAGAAEAAAAjABoABAAHAAMAAAAlABkABAAGAAEAAAAmABkABAAGAAEAAAAqABkABAAFAAEAAAAsABoABAAFAAEAAAAnAB0ABAAHAAIAAAAtABoABAAFAAEAAAAwABoABAAFAAEAAAAqABcABAAFAAEAAAA1ABoABAAGAAEAAAA2ABUABAAGAAMAAAA6ABUABAAFAAEAAAA6ABcABAAGAAEAAAA8ABYABAAFAAEAAAA1ABMABAAFAAEAAAA1ABAABAAGAAEAAAA5AA4ABAAFAAEAAAA6AA0ABAAGAAEAAAA0AA8ABAAFAAEAAAA7AAsABAAFAAEAAAA3AAsABAAHAAIAAAA8AA0ABAAFAAEAAAA6AAoABAAHAAIAAAA1AAkABAAGAAIAAAA0AAcABAAFAAEAAAAyAAYABAAGAAEAAAAxAAcABAAFAAEAAAAwAAYABAAGAAEAAAAuAAcABAAFAAEAAAApAAUABAAFAAEAAAArAAMABAAFAAEAAAAuAAQABAAFAAEAAAAnAAoABAAFAAEAAAAnAAsABAAGAAIAAAApAAoABAAGAAMAAAAuAAsABAAGAAEAAAAoAAcABAAGAAEAAAAsAAUABAAGAAEAAAAsAAoABAAFAAEAAAAwAA0ABAAGAAEAAAArAA4ABAAFAAEAAAAkAAoABAAGAAEAAAAkAAgABAAFAAEAAAAjAAYABAAGAAEAAAAdAAUABAAFAAEAAAAcAAYABAAFAAEAAAAhAAUABAAGAAEAAAAgAAUABAAFAAEAAAAYAAUABAAFAAEAAAAbABEABAAGAAMAAAAZABAABAAGAAIAAAAcAA4ABAAHAAIAAAAYAA4ABAAHAAMAAAA=")
